@@ -10,8 +10,11 @@ func impuestos(costo_referencia:[Float]) -> [Float] {
     }
     return costo_impuesto
 }
+
+let costos_con_impuestos = impuestos(costo_referencia)
+
 print("Costos: \(costo_referencia)")
-print("Costos con impuestos: \(impuestos(costo_referencia))")
+print("Costos con impuestos: \(impuestos(costos_con_impuestos))")
 
 func sumaTres(twoValues:(Int, Int), thirdValue:Int) -> Int {
     return (twoValues.0 + twoValues.1 + thirdValue)
@@ -41,13 +44,15 @@ func transformar<T>(d:T, acumula:(T) -> T) -> T{
 }
 
 print("\(transformar(datos) {(d) in d})")
+//Libreria swift
+let precios:[Float] = [4.2, 5.3, 8.2, 4.5]
+var impuestoMap = precios.map {impuestos([$0])}
 
-//Libreria Swift
+print(impuestoMap)
+
+let precio_menor = costos_con_impuestos.filter { $0 < 6.0}
 /*
-Aplica la función de librería de Swift map para la colección var precios = [4.2, 5.3, 8.2, 4.5] y aplica el impuesto de 16% y asígnala a la variable impuesto.
-Aplica la función de la librería de Swift filter para la colección resultante impuesto del paso A, en donde obtengas sólo los precios mayores a 6.0 y asígnalos a la variable precio_menor.
+Vacio porque los valores de costos_con_impuestos son:
+[11.1685, 14.1288, 13.3214]
 */
-var precios:[Float] = [4.2, 5.3, 8.2, 4.5]
-var impuesto = impuestos(precios)
-
-func obtenerMenor(listaPrecios:[Float])
+print(precio_menor)
